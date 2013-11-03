@@ -34,7 +34,7 @@ include_dirs = [ ]
 # config_defines.append('WITHOUT_PCAP_LIB_VERSION')
 
 # Versions prior to 0.8 don't have pcap_breakloop().
-# config_defines.append('WITHOUT_BREAKLOOP')
+config_defines.append('WITHOUT_BREAKLOOP')
 
 # Versions prior to 0.7.2 or so don't have pcap_list_datalinks().
 # config_defines.append('WITHOUT_LIST_DATALINKS')
