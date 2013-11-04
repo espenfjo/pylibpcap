@@ -13,6 +13,7 @@
 "  dump_open(filename)\n" \
 "  setnonblock(nonblock)\n" \
 "  getnonblock()\n" \
+"  breakloop()\n" \
 "  setfilter(filter, optimize, netmask)\n" \
 "  loop(count, callback)\n" \
 "  dispatch(count, callback)\n" \
@@ -73,6 +74,9 @@
 "Non-blocking behavior is only applicable to the dispatch method, and not\n"\
 "the loop and next methods.  It has no effect on savefiles."
 
+#define pcapObject_breakloop_doc \
+"breakloop()\n\n" \
+"Prematurely terminate the loop in pcap_dispatch() or pcap_loop()"
 
 #define pcapObject_setfilter_doc \
 "setfilter(filter, optimize, netmask)\n\n" \

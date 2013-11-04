@@ -200,7 +200,14 @@ int pcapObject_getnonblock(pcapObject *self)
     throw_exception(-1, ebuf);
   return status;
 }
+void pcapObject_breakloop(pcapObject *self)
+{
+	int status;
 
+	if (check_ctx(self))
+		return;
+	pcap_breakloop(self->pcap);
+}
 void pcapObject_setfilter(pcapObject *self, char *str,
                           int optimize, in_addr_t netmask)
 {
@@ -780,11 +787,7 @@ void PythonCallBack(u_char *user_data,
   if (result == NULL) {
     /* An exception was raised by the Python callback */
     context->threadstate = PyEval_SaveThread();
-#ifndef WITHOUT_BREAKLOOP
     pcap_breakloop(context->pcap);
-#else
-    /* Unfortunately, there's nothing much we can do here. */
-#endif
     return;
   } else {
     /* ignore result (probably None) */

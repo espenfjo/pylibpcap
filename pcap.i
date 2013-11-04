@@ -128,6 +128,8 @@ typedef struct {
     DOC(pcapObject_setnonblock,pcapObject_setnonblock_doc)
     int getnonblock(void);
     DOC(pcapObject_getnonblock,pcapObject_getnonblock_doc)
+    int breakloop(void);
+    DOC(pcapObject_breakloop,pcapObject_breakloop_doc)
     void setfilter(char *str, int optimize, in_addr_t netmask);
     DOC(pcapObject_setfilter,pcapObject_setfilter_doc)
     void loop(int cnt, PyObject *PyObj);

@@ -39,6 +39,7 @@ void pcapObject_open_offline(pcapObject *self, char *fname);
 void pcapObject_dump_open(pcapObject *self, char *fname);
 void pcapObject_setnonblock(pcapObject *self, int nonblock);
 int pcapObject_getnonblock(pcapObject *self);
+void pcapObject_breakloop(pcapObject *self);
 void pcapObject_setfilter(pcapObject *self, char *str,
                           int optimize, in_addr_t netmask);
 PyObject *pcapObject_next(pcapObject *self);

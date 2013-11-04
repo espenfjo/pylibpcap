@@ -30,6 +30,9 @@ def _swig_setattr(self,class_type,name,value):
 def _swig_getattr(self,class_type,name):
     if (name == "thisown"): return self.this.own()
     method = class_type.__swig_getmethods__.get(name,None)
+    print name
+    print method
+    print doc(method)
     if method: return method(self)
     raise AttributeError,name
 
@@ -69,6 +72,7 @@ class pcapObject(_object):
             self.major_version.im_func.__doc__ = _pcap.pcapObject_major_version.__doc__
             self.minor_version.im_func.__doc__ = _pcap.pcapObject_minor_version.__doc__
             self.getnonblock.im_func.__doc__ = _pcap.pcapObject_getnonblock.__doc__
+            self.breakloop.im_func.__doc__ = _pcap.pcapObject_breakloop.__doc__
             self.open_live.im_func.__doc__ = _pcap.pcapObject_open_live.__doc__
             self.dispatch.im_func.__doc__ = _pcap.pcapObject_dispatch.__doc__
             self.setnonblock.im_func.__doc__ = _pcap.pcapObject_setnonblock.__doc__
@@ -90,6 +94,7 @@ class pcapObject(_object):
     def dump_open(*args): return _pcap.pcapObject_dump_open(*args)
     def setnonblock(*args): return _pcap.pcapObject_setnonblock(*args)
     def getnonblock(*args): return _pcap.pcapObject_getnonblock(*args)
+    def breakloop(*args): return _pcap.pcapObject_breakloop(*args)
     def setfilter(*args): return _pcap.pcapObject_setfilter(*args)
     def loop(*args): return _pcap.pcapObject_loop(*args)
     def dispatch(*args): return _pcap.pcapObject_dispatch(*args)

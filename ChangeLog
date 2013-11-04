@@ -1,3 +1,10 @@
+2013-11-04  Espen Fjellvær Olsen <espen@mrfjo.org>
+
+  pylibpcap-0.6.4.1, 4 November 2013
+
+  Add pcap_breakloop method to easily break out
+  of pcap_live or pcap_dispatch.
+
 2012-01-05  Wim Lewis  <wiml@hhhh.org>
 
   pylibpcap-0.6.3, 5 January 2012

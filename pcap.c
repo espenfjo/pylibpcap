@@ -2744,7 +2744,7 @@ SWIG_From_int  (int value)
 {    
   return SWIG_From_long  (value);
 }
-
+ static char _doc_pcapObject_breakloop[] =  "prematurely terminate the loop in pcap_dispatch() or pcap_loop()";
  static char _doc_pcapObject_getnonblock[] =  "getnonblock()\n\n"  "Returns the non-blocking status of the pcapObject (returns 1 for\n" "non-blocking, returns 0 for blocking).  0 is always returned for savefiles\n" "Non-blocking behavior is only applicable to the dispatch method, and not\n" "the loop and next methods.  It has no effect on savefiles."; 
  static char _doc_pcapObject_setfilter[] =  "setfilter(filter, optimize, netmask)\n\n"  "Applies a filtering rule to the pcapObject.  'filter' is a BPF-style \n" "filter expression, 'optimize' controls whether the compiled BPF code is \n" "optimized, and 'netmask' in a network byte-order integer specifying the \n" "netmask of the local network."; 
  static char _doc_pcapObject_loop[] =  "loop(count, callback)\n\n"  "Read packets until 'count' packets have been received or an exception\n" "occurs.  The 'callback' argument is a python function of the form\n" "callback(pktlen, data, timestamp).  'pktlen' is the integer length of the\n" "observed packet on the wire, data is a string containing the captured\n" "bytes (may be less than the pktlen bytes), and the timestamp."; 
@@ -3177,6 +3177,34 @@ SWIGINTERN PyObject *_wrap_pcapObject_dispatch(PyObject *SWIGUNUSEDPARM(self), P
 fail:
   return NULL;
 }
+
+SWIGINTERN PyObject *_wrap_pcapObject_breakloop(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pcapObject *arg1 = (pcapObject *) 0 ;
+  int result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+
+  if (!PyArg_ParseTuple(args,(char *)"O:pcapObject_breakloop",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pcapObject, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pcapObject_breakloop" "', argument " "1"" of type '" "pcapObject *""'");
+  }
+  arg1 = (pcapObject *)(argp1);
+  {
+    pcapObject_breakloop(arg1);
+    if(PyErr_Occurred()) {
+      SWIG_fail;
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 
 
 SWIGINTERN PyObject *_wrap_pcapObject_next(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
@@ -3650,6 +3678,7 @@ static PyMethodDef SwigMethods[] = {
 	{ (char *)"pcapObject_setfilter", _wrap_pcapObject_setfilter, METH_VARARGS, _doc_pcapObject_setfilter },
 	{ (char *)"pcapObject_loop", _wrap_pcapObject_loop, METH_VARARGS, _doc_pcapObject_loop },
 	{ (char *)"pcapObject_dispatch", _wrap_pcapObject_dispatch, METH_VARARGS, _doc_pcapObject_dispatch },
+	{ (char *)"pcapObject_breakloop", _wrap_pcapObject_breakloop, METH_VARARGS, _doc_pcapObject_breakloop },
 	{ (char *)"pcapObject_next", _wrap_pcapObject_next, METH_VARARGS, _doc_pcapObject_next },
 	{ (char *)"pcapObject_datalink", _wrap_pcapObject_datalink, METH_VARARGS, _doc_pcapObject_datalink },
 	{ (char *)"pcapObject_datalinks", _wrap_pcapObject_datalinks, METH_VARARGS, _doc_pcapObject_datalinks },
@@ -4220,6 +4249,7 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_Python_SetConstant(d, "pcapObject_setfilter_doc",SWIG_FromCharPtr("setfilter(filter, optimize, netmask)\n\nApplies a filtering rule to the pcapObject.  \'filter\' is a BPF-style \nfilter expression, \'optimize\' controls whether the compiled BPF code is \noptimized, and \'netmask\' in a network byte-order integer specifying the \nnetmask of the local network."));
   SWIG_Python_SetConstant(d, "pcapObject_loop_doc",SWIG_FromCharPtr("loop(count, callback)\n\nRead packets until \'count\' packets have been received or an exception\noccurs.  The \'callback\' argument is a python function of the form\ncallback(pktlen, data, timestamp).  \'pktlen\' is the integer length of the\nobserved packet on the wire, data is a string containing the captured\nbytes (may be less than the pktlen bytes), and the timestamp."));
   SWIG_Python_SetConstant(d, "pcapObject_dispatch_doc",SWIG_FromCharPtr("dispatch(count, callback)\n\nRead packets until at most \'count\' packets have been read, or a timeoutoccurs, or an exception is raised.  Timeout behavior is not supported on\nall platforms, and on some platforms, the timer doesn\'t start until at least\none packet arrives.  \nThe \'callback\' argument is a python function of the form\ncallback(pktlen, data, timestamp).  \'pktlen\' is the integer length of the\nobserved packet on the wire, data is a string containing the captured\nbytes (may be less than the pktlen bytes), and the timestamp."));
+  SWIG_Python_SetConstant(d, "pcapObject_breakloop_doc",SWIG_FromCharPtr("prematurely terminate the loop in pcap_dispatch() or pcap_loop()"));
   SWIG_Python_SetConstant(d, "pcapObject_next_doc",SWIG_FromCharPtr("next()\n\nReads the next packet from the interface, returning a tuple containing\nthe integer length of the observed packet on the wire, a string containing\nthe captured bytes (may be less than the pktlen bytes), and the timestamp."));
   SWIG_Python_SetConstant(d, "pcapObject_datalink_doc",SWIG_FromCharPtr("datalink()\n\nReturns an integer value representing the link layer type (e.g. DLT_EN10MB)"));
   SWIG_Python_SetConstant(d, "pcapObject_datalinks_doc",SWIG_FromCharPtr("datalinks()\n\nReturns a tuple of integer values representing the link layer types\navailable on this interface (e.g. DLT_EN10MB)"));
