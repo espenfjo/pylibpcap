@@ -1,4 +1,3 @@
-
 /*
 Python libpcap
 Copyright (C) 2001, David Margrave
@@ -281,7 +280,7 @@ int pcapObject_invoke(pcapObject *self, int cnt, PyObject *PyObj,
   PyEval_RestoreThread(callbackContextBuf.threadstate);
 
   /* the pcap(3) man page describes the specal return values -1 and -2 */
-  if (status == -2 && PyErr_Occurred()) {
+  if (status == -2) {
     /* pcap_breakloop() was called */
     return status;
   }
